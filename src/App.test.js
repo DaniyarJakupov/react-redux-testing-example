@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
-import CommentBox from "./components/CommentBox";
-import CommentList from "./components/CommentList";
+import App from "App";
+import CommentBox from "components/CommentBox";
+import CommentList from "components/CommentList";
 
 it("shows a comment box", () => {
   // Shallow renders only the given component
