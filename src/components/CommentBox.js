@@ -1,20 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { saveComment } from "redux/actions";
 
 class CommentBox extends Component {
   state = {
-    text: ""
+    comment: ""
   };
 
   onTextChange = ({ target: { value } }) => {
-    this.setState({ text: value });
+    this.setState({ comment: value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     // TODO: call action creator to save comment
-
+    this.props.saveComment(this.state.comment);
     // Clear state
-    this.setState({ text: "" });
+    this.setState({ comment: "" });
   };
 
   render() {
@@ -27,7 +29,7 @@ class CommentBox extends Component {
           id=""
           cols="30"
           rows="10"
-          value={this.state.text}
+          value={this.state.comment}
           onChange={this.onTextChange}
         />
 
@@ -39,4 +41,7 @@ class CommentBox extends Component {
   }
 }
 
-export default CommentBox;
+export default connect(
+  null,
+  { saveComment }
+)(CommentBox);
