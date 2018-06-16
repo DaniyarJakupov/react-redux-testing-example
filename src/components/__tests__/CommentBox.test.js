@@ -1,10 +1,15 @@
 import React from "react";
 import { mount } from "enzyme";
 import CommentBox from "components/CommentBox";
+import WithProvider from "redux/index";
 
 let wrapped;
 beforeEach(() => {
-  wrapped = mount(<CommentBox />);
+  wrapped = mount(
+    <WithProvider>
+      <CommentBox />
+    </WithProvider>
+  );
 });
 afterEach(() => {
   wrapped.unmount();
