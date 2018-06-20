@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import reduxPromise from "redux-promise";
 import reducers from "redux/reducers";
 
 export default ({ children, initState = {} }) => {
@@ -10,7 +11,7 @@ export default ({ children, initState = {} }) => {
       store={createStore(
         reducers,
         initState,
-        composeWithDevTools(applyMiddleware())
+        composeWithDevTools(applyMiddleware(reduxPromise))
       )}
     >
       {children}
